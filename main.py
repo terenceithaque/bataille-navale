@@ -1,3 +1,3 @@
-"main.py gère la logique principale du jeu."
+"main.py exécute le jeu"
 import pygame # Importer pygame
 
