@@ -1,6 +1,7 @@
 "jeu.py contient une classe Jeu qui renferme la logique principale du gameplay."
 import pygame # Importer pygame
 pygame.init() # Initialiser pygame
+from decor import * # Importer decor.py
 
 
 class Jeu:
@@ -15,6 +16,9 @@ class Jeu:
         self.fenetre = pygame.display.set_mode((largeur, hauteur))
         # Titre de la fenêtre
         pygame.display.set_caption(titre)
+
+        # Créer le décor du jeu
+        self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=largeur, hauteur_image=hauteur//2, largeur_ecran=largeur, hauteur_ecran=hauteur)
 
         # Reste du code du gameplay
 
@@ -31,6 +35,8 @@ class Jeu:
                     # Mettre la variable d'exécution à False 
                     self.execution = False
 
+            # Afficher le décor du jeu
+            self.decor.afficher(self.fenetre)
             # Mettre à jour l'affichage
             pygame.display.flip()              
         
