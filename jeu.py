@@ -18,7 +18,7 @@ class Jeu:
         pygame.display.set_caption(titre)
 
         # Créer le décor du jeu
-        self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=largeur, hauteur_image=hauteur//2, largeur_ecran=largeur, hauteur_ecran=hauteur)
+        self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=largeur//2, hauteur_image=hauteur//2, largeur_ecran=largeur, hauteur_ecran=hauteur)
 
         # Reste du code du gameplay
 

@@ -19,8 +19,8 @@ class Decor:
 
         # Obtenir le rectangle de l'image
         self.rect = self.image.get_rect()
-        self.rect.x = largeur_ecran // 2
-        self.rect.y = hauteur_ecran // 2
+        self.rect.x = largeur_image // 2
+        self.rect.y = hauteur_image // 2
 
     def afficher(self, ecran:pygame.Surface) -> None:
         "Affiche le décor à l'écran."
