@@ -4,9 +4,8 @@ pygame.init() # Initialiser pygame
 from jeu import * # Importer le contenu du fichier jeu.py
 from tkinter import messagebox # Importer le module messagebox de tkinter
 
-
 # Exécuter une première partie
-jeu = Jeu(titre="Bataille navale !", largeur=800, hauteur=600)
+jeu = Jeu(titre="Bataille navale !")
 jeu.executer()
 del jeu
 pygame.quit()
@@ -16,7 +15,7 @@ while True:
     if rejouer: # Si le joueur veut rejouer
         # Réinitialiser le jeu
         pygame.init()
-        jeu = Jeu(titre="Bataille navale !", largeur=800, hauteur=600)
+        jeu = Jeu(titre="Bataille navale !")
         jeu.executer()
 
     else:

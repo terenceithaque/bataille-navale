@@ -6,23 +6,29 @@ from decor import * # Importer decor.py
 
 class Jeu:
     """Classe représentant une partie de bataille navale."""
-    def __init__(self, titre:str, largeur:int, hauteur:int) -> None:
+    def __init__(self, titre:str) -> None:
         """Initilisation du jeu.
         - titre: titre de la fenêtre de jeu
-        - largeur: largeur de la fenêtre de jeu
-        - hauteur: hauteur de la fenêtre de jeu"""
+       """
 
         # Fenêtre du jeu
-        self.fenetre = pygame.display.set_mode((largeur, hauteur))
+
+        self.fenetre = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+
+     
+
         # Titre de la fenêtre
         pygame.display.set_caption(titre)
 
+        self.infos_ecran = pygame.display.Info()
+        self.largeur_ecran = self.infos_ecran.current_w
+        self.hauteur_ecran = self.infos_ecran.current_h
         # Créer le décor du jeu
-        self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=largeur//2, hauteur_image=hauteur//2, largeur_ecran=largeur, hauteur_ecran=hauteur)
+        self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=self.largeur_ecran, hauteur_image=self.hauteur_ecran, largeur_ecran=self.largeur_ecran, hauteur_ecran=self.hauteur_ecran)
 
         # Reste du code du gameplay
 
-    def executer(self):
+    def executer(self) -> None:
         """Exécute la boucle de jeu."""
         self.execution = True # Variable pour marquer l'état du jeu (en exécution ou non)
 
