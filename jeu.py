@@ -24,7 +24,7 @@ class Jeu:
         self.largeur_ecran = self.infos_ecran.current_w
         self.hauteur_ecran = self.infos_ecran.current_h
         # Créer le décor du jeu
-        self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=self.largeur_ecran, hauteur_image=self.hauteur_ecran, largeur_ecran=self.largeur_ecran, hauteur_ecran=self.hauteur_ecran)
+        self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=self.largeur_ecran, hauteur_image=self.hauteur_ecran, largeur_ecran=self.largeur_ecran)
 
         # Reste du code du gameplay
 

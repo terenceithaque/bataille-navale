@@ -5,7 +5,7 @@ pygame.init()
 
 class Decor:
     """Classe représentant le décor du jeu"""
-    def __init__(self, image="assets/images/ocean.jpg", largeur_image=600, hauteur_image=800, largeur_ecran=600, hauteur_ecran=800) -> None:
+    def __init__(self, image="assets/images/ocean.jpg", largeur_image=600, hauteur_image=800) -> None:
         """Initialise le décor du jeu.
         - image: chemin de l'image représentant le décor du jeu.
         - largeur_image: largeur de l'image.
@@ -19,9 +19,9 @@ class Decor:
 
         # Obtenir le rectangle de l'image
         self.rect = self.image.get_rect()
-        self.rect.centerx = largeur_image
-        self.rect.centery = hauteur_image
+        self.x = 0
+        self.y = 0
 
     def afficher(self, ecran:pygame.Surface) -> None:
         "Affiche le décor à l'écran."
-        ecran.blit(self.image, self.rect)    
+        ecran.blit(self.image, (self.x, self.y))    
