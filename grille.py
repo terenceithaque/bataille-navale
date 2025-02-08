@@ -1,5 +1,6 @@
 "grille.py permet de générer une grille de jeu."
-
+import pygame
+pygame.init
 from typing import Any
 
 
@@ -31,6 +32,28 @@ class Grille:
 
 
         return self.contenu
+    
+    def afficher(self, surface:pygame.Surface, pos_x:int, pos_y:int, max_x:int, max_y:int, taille:int) -> None:
+        """Affiche la grille sur une surface pygame.
+        - surface: Element d'affichage cible pygame.Surface
+        - pos_x: position x de départ
+        - pos_y: position y de départ
+        - max_x: position x maximale
+        - max_y: position y maximale
+        - taille: taille des lignes de la grille"""
+
+        # Dessiner les lignes verticales
+        largeur_surface = surface.get_width()
+        print("Largeur de la surface:", largeur_surface)
+        for x in range(pos_x, max_x, taille):
+            pygame.draw.line(surface, (200, 200, 200), (x, 0), (x, largeur_surface), 1)
+
+
+        # Dessiner les lignes horizontales
+        hauteur_surface = surface.get_height()
+        print("Hauteur de la surface:", hauteur_surface)
+        for y in range(pos_y, max_y, taille):
+            pygame.draw.line(surface, (200, 200, 200), (0, y), (largeur_surface, y), 1)    
 
 
 

@@ -2,7 +2,7 @@
 import pygame # Importer pygame
 pygame.init() # Initialiser pygame
 from decor import * # Importer decor.py
-
+from grille import * # Importer grille.py
 
 class Jeu:
     """Classe représentant une partie de bataille navale."""
@@ -26,7 +26,9 @@ class Jeu:
         # Créer le décor du jeu
         self.decor = Decor(image="assets/images/ocean.jpg", largeur_image=self.largeur_ecran, hauteur_image=self.hauteur_ecran)
 
-        # Reste du code du gameplay
+        # Grilles du joueur et de l'adversaire
+        self.grille_joueur = Grille(n_lignes=11, n_colonnes=11)
+
 
     def executer(self) -> None:
         """Exécute la boucle de jeu."""
@@ -43,6 +45,9 @@ class Jeu:
 
             # Afficher le décor du jeu
             self.decor.afficher(self.fenetre)
+
+            # Afficher les grilles
+            self.grille_joueur.afficher(self.fenetre, 0, 0, 450, 450, 10)
             # Mettre à jour l'affichage
             pygame.display.flip()              
         
