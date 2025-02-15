@@ -42,18 +42,21 @@ class Grille:
         - max_y: position y maximale
         - taille: taille des lignes de la grille"""
 
-        # Dessiner les lignes verticales
         largeur_surface = surface.get_width()
-        print("Largeur de la surface:", largeur_surface)
+        hauteur_surface = surface.get_height()
+        hauteur_max = hauteur_surface // 2
+        # Dessiner les lignes verticales
+        
+        #print("Largeur de la surface:", largeur_surface)
         for x in range(pos_x, max_x, taille):
-            pygame.draw.line(surface, (200, 200, 200), (x, 0), (x, largeur_surface), 1)
+            pygame.draw.line(surface, (200, 200, 200), (x, pos_y), (x, max_y), 1)
 
 
         # Dessiner les lignes horizontales
         hauteur_surface = surface.get_height()
-        print("Hauteur de la surface:", hauteur_surface)
+        #print("Hauteur de la surface:", hauteur_surface)
         for y in range(pos_y, max_y, taille):
-            pygame.draw.line(surface, (200, 200, 200), (0, y), (largeur_surface, y), 1)    
+            pygame.draw.line(surface, (200, 200, 200), (pos_x, y), (min(max_x, largeur_surface), y), 1)    
 
 
 

@@ -13,7 +13,7 @@ class Jeu:
 
         # Fenêtre du jeu
 
-        self.fenetre = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.fenetre = pygame.display.set_mode((800, 600))
 
      
 
@@ -28,6 +28,8 @@ class Jeu:
 
         # Grilles du joueur et de l'adversaire
         self.grille_joueur = Grille(n_lignes=11, n_colonnes=11)
+        self.grille_joueur_x = self.fenetre.get_width() # Position x de la grille du joueur
+        self.grille_joueur_y = self.fenetre.get_height() // 2 # Position y de la grille du joueur
 
 
     def executer(self) -> None:
@@ -43,11 +45,14 @@ class Jeu:
                     # Mettre la variable d'exécution à False 
                     self.execution = False
 
+                if evenement.type == pygame.MOUSEMOTION:
+                    print("Position de la souris :", pygame.mouse.get_pos())    
+
             # Afficher le décor du jeu
             self.decor.afficher(self.fenetre)
 
             # Afficher les grilles
-            self.grille_joueur.afficher(self.fenetre, 0, 0, 450, 450, 10)
+            self.grille_joueur.afficher(self.fenetre, 0, self.grille_joueur_y, self.grille_joueur_x, self.fenetre.get_height() , 10)
             # Mettre à jour l'affichage
             pygame.display.flip()              
         
