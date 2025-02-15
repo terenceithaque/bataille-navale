@@ -52,7 +52,7 @@ class Jeu:
             self.decor.afficher(self.fenetre)
 
             # Afficher les grilles
-            self.grille_joueur.afficher(self.fenetre, 0, self.grille_joueur_y, self.grille_joueur_x, self.fenetre.get_height() , 10)
+            self.grille_joueur.afficher(self.fenetre, 0, self.grille_joueur_y, self.grille_joueur_x, self.fenetre.get_height() , 15)
             # Mettre à jour l'affichage
             pygame.display.flip()              
         

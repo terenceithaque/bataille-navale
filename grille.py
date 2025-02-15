@@ -56,7 +56,28 @@ class Grille:
         hauteur_surface = surface.get_height()
         #print("Hauteur de la surface:", hauteur_surface)
         for y in range(pos_y, max_y, taille):
-            pygame.draw.line(surface, (200, 200, 200), (pos_x, y), (min(max_x, largeur_surface), y), 1)    
+            pygame.draw.line(surface, (200, 200, 200), (pos_x, y), (min(max_x, largeur_surface), y), 1)
+
+    def est_vide(self, colonne=0, ligne=0) -> bool:
+        "Vérifie si la case aux coordonées (ligne, colonne) est vide dans la ligne est vide. Si aucune ligne ou colonne n'est spécifiée, vérifie la première ligne entièremment. Renvoie un booléen."
+        # Assertions
+        assert (type(colonne).__name__ in ["int", "NoneType"]), "case doit être de type int ou NoneType."
+
+        if colonne: # Si une colonne est spécifiée
+            if self.contenu[ligne][colonne] > 0:
+                return False
+            
+            return True
+        
+        else: # Sinon, vérifier la ligne entière
+            for i in range(len(self.contenu[ligne])):
+                if self.contenu[ligne][i] > 0:
+                    return False
+
+            return True    
+
+
+
 
 
 
