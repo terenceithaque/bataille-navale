@@ -58,6 +58,58 @@ class Grille:
         for y in range(pos_y, max_y, taille):
             pygame.draw.line(surface, (200, 200, 200), (pos_x, y), (min(max_x, largeur_surface), y), 1)
 
+
+    def position_absolue(self, pos_relative="A1") -> tuple:
+        """Traduit une position relative (par exemple, 'A1') en position absolue (par exemple, (0, 0)). Renvoie un tuple.
+        - pos_relative: chaîne de caractères contenant la position relative à traduire."""
+
+
+        # Assertions
+        assert (len(pos_relative) >= 2), "La position relative doit contenir au moins deux éléments."
+        assert (type(pos_relative).__name__ == "str"), "La position relative doit être une chaîne de caractères."
+        assert (int("".join(pos_relative[1:]))), "Les éléments après l'indice zéro doivent être traitables comme des entiers."
+
+        pos_relative = pos_relative.upper() # Convertir la position relative en majuscule.s
+        pos_absolue = () # Tuple contenant la position absolue calculée.
+        
+        # Positions numériques correspondantes aux lettres, compte à partir de zéro.
+        pos_lettres = {"A": 0,
+                       "B":1,
+                       "C":2,
+                       "D":3,
+                       "E":4,
+                       "F":5,
+                       "G":6,
+                       "H":7,
+                       "I":8,
+                       "J":9,
+                       "K":10}
+        
+        # Positions numériques, converties en chaînes de caractères
+        pos_numeriques = [str(i) for i in range(len(self.contenu))]
+
+        # Convertir la position relative en position absolue à l'aide des données.
+        ligne = 0
+        colonne = 0
+        for valeur in pos_relative:
+            # Si la valeur actuelle est une lettre
+            if valeur in pos_lettres.keys():
+                ligne = pos_lettres[valeur] # La ligne correspond à la position absolue de la lettre
+
+            # Si la valeur est une position numériques
+            elif valeur in pos_numeriques:
+                 colonne = int("".join(pos_relative[1:])) - 1  # La colonne correspond à la position absolue de la valeur numérique
+
+
+        pos_absolue = (ligne, colonne)
+        return pos_absolue
+
+
+        
+
+        
+
+
     def est_vide(self, colonne=0, ligne=0) -> bool:
         "Vérifie si la case aux coordonées (ligne, colonne) est vide dans la ligne est vide. Si aucune ligne ou colonne n'est spécifiée, vérifie la première ligne entièremment. Renvoie un booléen."
         # Assertions
@@ -70,11 +122,7 @@ class Grille:
             return True
         
         else: # Sinon, vérifier la ligne entière
-            for i in range(len(self.contenu[ligne])):
-                if self.contenu[ligne][i] > 0:
-                    return False
-
-            return True    
+            return all(case <= 0 for case in self.contenu[ligne])   
 
 
 

@@ -1,5 +1,6 @@
 "decor.py implémente une classe Decor qui permet de créer un décor pour le jeu"
 import pygame # Importer pygame
+from random import randint
 pygame.init()
 
 
@@ -21,6 +22,21 @@ class Decor:
         self.rect = self.image.get_rect()
         self.x = 0
         self.y = 0
+
+    
+
+
+    def animer(self, direction="verticale") -> None:
+        "Anime le décor selon une direction spécifiée."
+
+        # Gérer la direction verticale
+        if direction == "verticale":
+            self.x += randint(-10, 10)
+
+        # Gérer la direction horizontale
+        elif direction == "horizontale":
+            self.y += randint(-10, 10)    
+
 
     def afficher(self, ecran:pygame.Surface) -> None:
         "Affiche le décor à l'écran."

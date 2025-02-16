@@ -1,6 +1,7 @@
 "jeu.py contient une classe Jeu qui renferme la logique principale du gameplay."
 import pygame # Importer pygame
 pygame.init() # Initialiser pygame
+import random
 from decor import * # Importer decor.py
 from grille import * # Importer grille.py
 
@@ -38,6 +39,8 @@ class Jeu:
 
         # Boucle de jeu
         while self.execution:
+            print("Position absolue de A1 :", self.grille_joueur.position_absolue("A1"))
+            self.fenetre.fill((0, 0, 0))
             # Détecter les événements de jeu et réagir en conséquence
             for evenement in pygame.event.get():
                 # Si le joueur veut quitter le jeu
@@ -48,7 +51,8 @@ class Jeu:
                 if evenement.type == pygame.MOUSEMOTION:
                     print("Position de la souris :", pygame.mouse.get_pos())    
 
-            # Afficher le décor du jeu
+            # Animer et afficher le décor du jeu
+            #self.decor.animer(random.choice(["verticale", "horizontale"]))
             self.decor.afficher(self.fenetre)
 
             # Afficher les grilles
